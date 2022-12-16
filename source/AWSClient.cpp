@@ -153,14 +153,13 @@ void AWSClient::eventCallbackStatic(MQTTContext_t *pMqttContext,
             }
         }
         // Not a shadow topic, forward to the callback
-        else
 #endif // MBED_CONF_AWS_CLIENT_SHADOW
-        {
-            awsClient.subCallback(pPublishInfo->pTopicName,
-                                  pPublishInfo->topicNameLength,
-                                  pPublishInfo->pPayload,
-                                  pPublishInfo->payloadLength);
-        }
+        
+        awsClient.subCallback(pPublishInfo->pTopicName,
+                              pPublishInfo->topicNameLength,
+                              pPublishInfo->pPayload,
+                              pPublishInfo->payloadLength);
+        
     } else {
         /* Handle other packets. */
         switch (pPacketInfo->type) {
